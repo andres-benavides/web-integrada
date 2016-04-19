@@ -4,6 +4,7 @@ error_reporting(E_ALL);
 session_start();
 $data = json_decode(file_get_contents('php://input'), true);
 $datos = $data['datos'];
+echo"KJHJGHFHGF";
 if (isset($datos['action'])) {
   include './db/Conexion.php';
   switch ($datos['action']){
@@ -19,5 +20,5 @@ if (isset($datos['action'])) {
       break;
   }
 } else {
- // include_once './controlador/mainController.php';
+  include_once './controlador/mainController.php';
 }
