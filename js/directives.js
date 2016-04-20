@@ -39,7 +39,64 @@
       templateUrl: 'partials/asigna.html'
     };
   });
-
+  //DIRECTIVA PARA SUBIR IMAGENES
+  modulDirect.directive("fileinput", ['$parse', '$http',
+    function ($parse, $http) {
+      return {
+        restrict: 'EA',
+        template: "<input type='file'/>",
+        replace: true,
+        link: function (scope, elem, attrs, ctrl) {
+          elem.bind('change', function () {
+            scope.error = null;
+            var f = elem[0].files[0];
+            var ok = true;
+            if (attrs.size && f.size > (parseInt(attrs.size) * 1048576)) {
+              ok = false;
+              alert("Error en el tamaño del archivo, supera el tamaño maximo esperado");
+            } else {
+              if (attrs.ftype) {
+                ok = false;
+                var tipos = attrs.ftype.split(';');
+                for (var i = 0; i < tipos.length; i++) {
+                  if (tipos[i] === f.type) {
+                    ok = true;
+                  }
+                }
+                if (!ok) {
+                  alert("Error en el tipo del archivo, formato de archivo inesperado");
+                }
+              }
+            }
+            if(ok){
+              if (attrs.action) {
+                var formData = new FormData();
+                formData.append('archivo', f, f.name);
+                $http.post(attrs.action, formData, {
+                  transformRequest: angular.identity,
+                  headers: {'Content-Type': undefined}
+                }).success(function (data) {
+                  var model = $parse(attrs.ngModel);
+                  model.assign(scope, {code: data.codigo});
+                  var nombreModel = attrs.ngModel;
+                  nombreModel = nombreModel.replace(/File_/g, "");
+                  model = $parse(nombreModel);
+                  model.assign(scope, data.codigo);
+                  if (attrs.callback) {
+                    eval("scope." + attrs.callback);
+                  }
+                }).error(function () {
+                  alert('Error al cargar!');
+                });
+              }
+            } else {
+              alert("El archivo no cumple las caracteristicas");
+            }
+          });
+        }
+      };
+    }
+  ]);
   modulDirect.directive('pokemonComments', ['pokemonService', function (pokemonService) {
       return {
         restrict: 'E',

@@ -4,7 +4,9 @@
       <input type="hidden" ng-model="fDatos.tabla" value="carro" />
       <div class="form-group">
         <label for="foto">Foto:</label>
-        <input type="file" ng-model="fDatos.foto" name="foto" id="foto" class="form-control" required />
+        <!--<input type="file" ng-model="fDatos.foto" name="foto" id="foto" class="form-control" required />-->
+        <fileinput ng-model='fDatos.foto' callback='verAdjuntoArchivo=true' action='uploadFile.php' size = '4' name ='archivo'
+        type="file" accept=".jpg,.png"> </fileinput>
       </div>
       <div class="form-group">
         <label for="marca">Marca:</label>
