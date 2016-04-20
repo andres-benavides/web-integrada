@@ -10,14 +10,27 @@
         });
       };
       $scope.login = function () {
-       // $scope.fDatos = {action: 'login'};
+        // $scope.fDatos = {action: 'login'};
         usuarioService.conexion($scope.fDatos).then(function (data) {
           var respuesta = (data.data);
-          if(respuesta==true){
-             location.href="#inicio";
+          if (respuesta == true) {
+            location.href = "#inicio";
             //$location.path( "/inicio" );
           }
         });
+      };
+    }]);
+  modulCtrls.controller('adminController', ['$scope', '$routeParams', 'usuarioService','$window', function ($scope, $routeParams, usuarioService,$window) {
+      $scope.ver = "";
+      $scope.fDatos={};
+      //MOSTRAR LOS DIFERENTES FORMULARIOS
+      $scope.mostrar = function (ver) {
+        $scope.ver = ver;
+      };
+      //GUARDAR LOS DATOS 
+      
+      $scope.guardar = function(){
+        console.log($scope.fDatos);
       };
     }]);
 

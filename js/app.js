@@ -1,7 +1,10 @@
 (function () {
   var app = angular.module('carros', [
     'ngRoute',
-    'ngMaterial',
+    'ui.bootstrap',
+    'ngTouch', 
+    'ngAnimate', 
+    'ngSanitize',
     'carros.controllers',
     'carros.directives',
     'pokedex.filters',
@@ -24,10 +27,9 @@
       }
     )
     .when(
-      '/pokemon/:name',{
-        templateUrl:'views/pokemon.html',
-        controller:'PokemonController',
-        controllerAs:'pkmCtrl'
+      '/admin',{
+        templateUrl:'vista/admin.html',
+        controller:'adminController'
       }
     )
     .otherwise({

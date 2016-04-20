@@ -14,6 +14,31 @@
       templateUrl: 'partials/registro.html'
     };
   });
+  //ADMINISRADOR DE CARROS
+  modulDirect.directive('carros', function () {
+    return {
+      restrict: 'E',
+      templateUrl: 'partials/carros.html'
+    };
+  });
+  modulDirect.directive('caracteristica', function () {
+    return {
+      restrict: 'E',
+      templateUrl: 'partials/caracteristica.html'
+    };
+  });
+  modulDirect.directive('tipoCarac', function () {
+    return {
+      restrict: 'E',
+      templateUrl: 'partials/tipo-carac.html'
+    };
+  });
+  modulDirect.directive('asigna', function () {
+    return {
+      restrict: 'E',
+      templateUrl: 'partials/asigna.html'
+    };
+  });
 
   modulDirect.directive('pokemonComments', ['pokemonService', function (pokemonService) {
       return {
