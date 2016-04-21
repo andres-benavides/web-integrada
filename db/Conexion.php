@@ -13,7 +13,7 @@
  */
 class Conexion {
 
-  public static function conexionDb($prefijo="mysql",$dbname="autos", $user="root", $password="") {
+  public static function conexionDb($prefijo="mysql",$dbname="carros", $user="root", $password="") {
     $opciones = array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',);
     $dsn="$prefijo:host=localhost;dbname=$dbname";
     $conexion = new PDO( $dsn,  $user, $password,$opciones);

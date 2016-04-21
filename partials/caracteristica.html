@@ -1,11 +1,9 @@
 <uib-tabset active="activeJustified" justified="true">
   <uib-tab index="0" heading="Guardar">
-    <form role="form" ng-submit="enviar()" novalidate>
+    <form role="form" ng-submit="guardar()" novalidate>
       <div class="form-group">
         <label for="id_tipo">Tipo caracteristica</label>
-        <select ng-model="fDatos.id_tipo" name="id_tipo" id="id_tipo" class="form-control" required >
-          <option></option>
-        </select>
+        <select  class="form-control" ng-options="item.id as item.descripcion for item in items" ng-model="fDatos.id_tipo"></select>
       </div>
       <div class="form-group">
         <label for="nombre">Nombre:</label>

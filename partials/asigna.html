@@ -1,17 +1,20 @@
 <uib-tabset active="activeJustified" justified="true">
   <uib-tab index="0" heading="Guardar">
-    <form role="form" ng-submit="enviar()" novalidate>
+    <form role="form" ng-submit="guardar()" novalidate>
       <div class="form-group">
         <label for="id_caracteristica">Carro</label>
-        <select ng-model="fDatos.id_caracteristica" name="id_caracteristica" id="id_caracteristica" class="form-control" required >
+<!--        <select ng-model="fDatos.id_caracteristica" name="id_caracteristica" id="id_caracteristica" class="form-control" required >
+          
           <option></option>
-        </select>
+        </select>-->
+        <select class="form-control" ng-options="auto.id as auto.marca for auto in autos" ng-model="fDatos.id_auto"></select>
       </div>
       <div class="form-group">
         <label for="id_caracteristica">Caracteristica</label>
-        <select ng-model="fDatos.id_caracteristica" name="id_caracteristica" id="id_caracteristica" class="form-control" required >
+<!--        <select ng-model="fDatos.id_caracteristica" name="id_caracteristica" id="id_caracteristica" class="form-control" required >
           <option></option>
-        </select>
+        </select>-->
+        <select class="form-control" ng-options="caracteristica.id as caracteristica.nombre for caracteristica in caracteristicas" ng-model="fDatos.id_caracteristica"></select>
       </div>
       <div class="form-group">
         <label for="descripcion">Nombre:</label>
