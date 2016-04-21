@@ -67,7 +67,7 @@ class AutoModelo {
       return "ERROR: " . $e->getMessage();
     }
   }
-    public function consultaAuto() {
+  public function consultaAuto() {
     try {
       $sql = $this->db->prepare("SELECT id,marca FROM auto");
       $sql->execute();
@@ -76,7 +76,27 @@ class AutoModelo {
         array_push($resultado,$respuesta);
       }
       $registro = $sql->rowCount();
-     
+      if ($registro >= 1) {
+        return $resultado;
+      } else {
+        return false;
+      }
+    } catch (PDOException $e) {
+      return "ERROR: " . $e->getMessage();
+    }
+  }
+
+   public function datosAuto($id) {
+    try {
+      $sql = $this->db->prepare("call datos_auto(:idAuto)");
+      $sql->execute(Array('idAuto'=>$id));
+      $resultado = Array();
+      while($respuesta = $sql->fetch(PDO::FETCH_ASSOC)){
+        $resultado['foto']=$respuesta['foto'];
+        $resultado[$respuesta['descripcion']][]=Array($respuesta['nombre'],$respuesta['descAuto']);
+        //array_push($resultado,$respuesta);
+      }
+      $registro = $sql->rowCount();
       if ($registro >= 1) {
         return $resultado;
       } else {

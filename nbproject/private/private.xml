@@ -3,16 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/proyectoCorteII/partials/login.html</file>
-            <file>file:/C:/xampp/htdocs/proyectoCorteII/index.php</file>
-            <file>file:/C:/xampp/htdocs/proyectoCorteII/js/controllers.js</file>
-            <file>file:/C:/xampp/htdocs/proyectoCorteII/js/directives.js</file>
-            <file>file:/C:/xampp/htdocs/proyectoCorteII/controlador/UsuarioController.php</file>
-            <file>file:/C:/xampp/htdocs/proyectoCorteII/modelo/UsuarioModelo.php</file>
-            <file>file:/C:/xampp/htdocs/proyectoCorteII/js/services.js</file>
-            <file>file:/C:/xampp/htdocs/proyectoCorteII/js/app.js</file>
-            <file>file:/C:/xampp/htdocs/proyectoCorteII/partials/registro.html</file>
-            <file>file:/C:/xampp/htdocs/proyectoCorteII/vista/index.html</file>
+            <file>file:/Applications/MAMP/htdocs/web-integrada/vista/index.html</file>
+            <file>file:/Applications/MAMP/htdocs/web-integrada/vista/carros.html</file>
+            <file>file:/Applications/MAMP/htdocs/web-integrada/inicio.php</file>
+            <file>file:/Applications/MAMP/htdocs/web-integrada/controlador/carrosController.php</file>
+            <file>file:/Applications/MAMP/htdocs/web-integrada/index.php</file>
+            <file>file:/Applications/MAMP/htdocs/web-integrada/controlador/mainController.php</file>
+            <file>file:/Applications/MAMP/htdocs/web-integrada/js/carros/funciones.js</file>
+            <file>file:/Applications/MAMP/htdocs/web-integrada/partials/carros.html</file>
         </group>
     </open-files>
 </project-private>

@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
 include '../db/Conexion.php';
 include_once '../modelo/AutoModelo.php';
 include_once '../modelo/TipoCaracteristicaModelo.php';
@@ -6,6 +9,12 @@ include_once '../modelo/CaracteristacaModelo.php';
 include_once '../modelo/CaracteristicaAutoModelo.php';
 
 $data = json_decode(file_get_contents('php://input'), true);
+
+if($data==null){
+  $varPost = filter_input_array(INPUT_POST);
+  $data['datos'] = $varPost;
+}
+
 $datos = $data['datos'];
 switch ($datos['tabla']) {
   case "auto":
@@ -23,7 +32,13 @@ switch ($datos['tabla']) {
         $respuesta = $auto->consultaAuto();
         echo json_encode($respuesta);
         break;
+      case "datosAutos":
+        $auto = new AutoModelo();
+        $respuesta = $auto->datosAuto($varPost['id']);
+        echo json_encode($respuesta);
+        break;
       default:
+        echo "perra";
         break;
     }
     break;
