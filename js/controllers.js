@@ -14,7 +14,7 @@
         usuarioService.conexion($scope.fDatos).then(function (data) {
           var respuesta = (data.data);
           if (respuesta == true) {
-            location.href = "#inicio";
+            location.href = "inicio.php";
             //$location.path( "/inicio" );
           }
         });
