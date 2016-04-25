@@ -1,4 +1,5 @@
 <?php
+session_start();
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
@@ -7,10 +8,11 @@ include_once '../modelo/AutoModelo.php';
 include_once '../modelo/TipoCaracteristicaModelo.php';
 include_once '../modelo/CaracteristacaModelo.php';
 include_once '../modelo/CaracteristicaAutoModelo.php';
+include_once '../modelo/CalificacionModelo.php';
 
 $data = json_decode(file_get_contents('php://input'), true);
 
-if($data==null){
+if ($data == null) {
   $varPost = filter_input_array(INPUT_POST);
   $data['datos'] = $varPost;
 }
@@ -38,7 +40,7 @@ switch ($datos['tabla']) {
         echo json_encode($respuesta);
         break;
       default:
-        echo "perra";
+        
         break;
     }
     break;
@@ -59,7 +61,7 @@ switch ($datos['tabla']) {
         break;
     }
     break;
-   case "caracteristica":
+  case "caracteristica":
     switch ($datos['action']) {
       case "guardar":
         //VARIABLES
@@ -68,7 +70,7 @@ switch ($datos['tabla']) {
         $auto = new CaracteristacaModelo($id_tipo, $nombre);
         $auto->guardarCaracteristica();
         break;
-     case "consulta":
+      case "consulta":
         $auto = new CaracteristacaModelo();
         $respuesta = $auto->consultaCarac();
         echo json_encode($respuesta);
@@ -78,7 +80,7 @@ switch ($datos['tabla']) {
         break;
     }
     break;
-   case "caracteristicas_auto":
+  case "caracteristicas_auto":
     switch ($datos['action']) {
       case "guardar":
         //VARIABLES
@@ -88,7 +90,7 @@ switch ($datos['tabla']) {
         $auto = new CaracteristicaAutoModelo($id_caracteristica, $id_auto, $descripcion);
         $auto->guardarCaracXAuto();
         break;
-     case "consulta":
+      case "consulta":
         $auto = new CaracteristacaModelo();
         $respuesta = $auto->consultaCarac();
         echo json_encode($respuesta);
@@ -98,7 +100,24 @@ switch ($datos['tabla']) {
         break;
     }
     break;
-
+  case "calificacion":
+    switch ($datos['action']) {
+      case "guardar":
+        //VARIABLES
+        $id_auto = $datos['id_auto'];
+        $id_usuario = $_SESSION['idUser'];
+        $calificacion = $datos['calificacion'];
+        $fecha = date("Y-m-d H:i:s");
+        echo $_SESSION['idUser'];
+        $auto = new CalificacionModelo($id_auto, $id_usuario, $calificacion, $fecha);
+        echo $auto->guardarCalif();
+        break;
+      
+      default:
+        
+        break;
+    }
+    break;
   default:
     break;
 }

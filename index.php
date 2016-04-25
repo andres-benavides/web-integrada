@@ -11,12 +11,6 @@ if (isset($datos['action'])) {
     case"login";
       include_once './controlador/UsuarioController.php';
       break;
-    case'guardar':
-      include_once './controlador/guardaPersonaController.php';
-      break;
-    case 'consultar':
-      include_once './controlador/PersonaController.php';
-      break;
   }
 } else {
   include_once './controlador/mainController.php';

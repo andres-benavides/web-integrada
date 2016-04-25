@@ -3,7 +3,8 @@
     "uib-tab": {},
     "uib-tabset": {},
     "login": {},
-    "carros": {}
+    "carros": {},
+    "registro": {}
   },
   "attributes": {
     "ng-show": {},

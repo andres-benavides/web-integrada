@@ -61,10 +61,13 @@ class Usuario {
       }
       $camposOk = substr($campos, 0, -1);
       $sql = $this->db->prepare("INSERT INTO usuario(nombre,password,email) VALUES ($camposOk)");
-      $sql->execute($insert);
-      echo($camposOk);
-      print_r($insert);
-      return true;
+      $hola=$sql->execute($insert);
+      if($hola!=FALSE){
+        return true;
+      }else{
+        return false;
+      }
+      
     } catch (PDOException $e) {
       return "ERROR: " . $e->getMessage();
     }

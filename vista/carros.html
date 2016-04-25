@@ -17,8 +17,14 @@
   <body>
     <div class="container-fluid" >
       <div class="row">
+        <div class="col-xs-2">
+          <button class="btn bg-primary" id="calificar">CALIFICAR</button>
+          <button class="btn bg-success" id="grdCali" style="display: none">Guardar calificacion</button>
+        </div>
+      </div>
+      <div class="row">
         <div class="card-group">
-          <div class="col-lg-2">
+          <div class="col-xs-2">
             <div class="card">
               <img class="card-img-top" data-src="..." id="imgCar1" >
               <div class="card-block">
@@ -28,16 +34,16 @@
                 </select>
                 <div class="divCal" id="divClas1">
                   Calificacion:<br>
-                  <input type="range" id="cali1" min="1" max="5" step="1" class="calif"/>
-                  <span id="numCalif1"></span>
+                  <select data-range="1" id="cali1"  class="form-control calif"></select>
+                  
                 </div>
               </div>
-              <ul class="list-group list-group-flush" id="desc1">
+              <ul class="list-group list-group-flush"  data-ver="" id="desc1">
 
               </ul>
             </div>
           </div>
-          <div class="col-lg-2">
+          <div class="col-xs-2">
             <div class="card">
               <img class="card-img-top" data-src="..."  id="imgCar2">
               <div class="card-block">
@@ -47,16 +53,16 @@
                 </select>
                 <div class="divCal" id="divClas2">
                   Calificacion:<br>
-                  <input type="range" id="cali2" min="1" max="5" step="1" class="calif"/>
-                  <span id="numCalif2"></span>
+                  <select data-range="2" id="cali2"  class="form-control calif"></select>
+                  
                 </div>
               </div>
-              <ul class="list-group list-group-flush" id="desc2">
+              <ul class="list-group list-group-flush"  data-ver="" id="desc2">
 
               </ul>
             </div>
           </div>
-          <div class="col-lg-2">
+          <div class="col-xs-2">
             <div class="card">
               <img class="card-img-top" data-src="..." id="imgCar3">
               <div class="card-block">
@@ -66,16 +72,16 @@
                 </select>
                 <div class="divCal" id="divClas3">
                   Calificacion:<br>
-                  <input type="range" id="cali3" min="1" max="5" step="1" class="calif"/>
-                  <span id="numCalif3"></span>
+                  <select data-range="3" id="cali3"  class="form-control calif"></select>
+                  
                 </div>
               </div>
-              <ul class="list-group list-group-flush">
+              <ul class="list-group list-group-flush"  data-ver="" id="desc3">
 
               </ul>
             </div>
           </div>
-          <div class="col-lg-2">
+          <div class="col-xs-2">
             <div class="card">
               <img class="card-img-top" data-src="..." id="imgCar4">
               <div class="card-block">
@@ -85,16 +91,16 @@
                 </select>
                 <div class="divCal" id="divClas4">
                   Calificacion:<br>
-                  <input type="range" id="cali4" min="1" max="5" step="1" class="calif"/>
-                  <span id="numCalif4"></span>
+                  <select data-range="4" id="cali4"  class="form-control calif"></select>
+                  
                 </div>
               </div>
-              <ul class="list-group list-group-flush">
+              <ul class="list-group list-group-flush"  data-ver="" id="desc4">
 
               </ul>
             </div>
           </div>
-          <div class="col-lg-2">
+          <div class="col-xs-2">
             <div class="card">
               <img class="card-img-top" data-src="..." id="imgCar5">
               <div class="card-block">
@@ -104,11 +110,11 @@
                 </select>
                 <div class="divCal" id="divClas5">
                   Calificacion:<br>
-                  <input type="range" id="cali5" min="1" max="5" step="1" class="calif"/>
-                  <span id="numCalif5"></span>
+                  <select data-range="5" id="cali5"  class="form-control calif"></select>
+                  
                 </div>
               </div>
-              <ul class="list-group list-group-flush" id="desc5">
+              <ul class="list-group list-group-flush"  data-ver="" id="desc5">
 
               </ul>
             </div>

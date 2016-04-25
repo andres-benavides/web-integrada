@@ -21,9 +21,9 @@
       }
     )
     .when(
-      '/inicio/',{
-        templateUrl:'vista/inicio.html',
-        controller:'userController'
+      '/registro',{
+        templateUrl:'vista/registro.html',
+        controller:'registroController'
       }
     )
     .when(

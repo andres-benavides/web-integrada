@@ -1,16 +1,9 @@
 (function () {
   var modulCtrls = angular.module('carros.controllers', []);
 
-  modulCtrls.controller('userController', ['$scope', '$routeParams', 'usuarioService', function ($scope, $routeParams, usuarioService) {
+  modulCtrls.controller('userController', ['$scope', 'usuarioService', function ($scope, usuarioService) {
       $scope.fDatos = {action: 'login'};
-      $scope.enviar = function () {
-        $scope.fDatos = {action: 'guardarUser'};
-        usuarioService.conexion($scope.fDatos).then(function (data) {
-          console.log(data);
-        });
-      };
       $scope.login = function () {
-        // $scope.fDatos = {action: 'login'};
         usuarioService.conexion($scope.fDatos).then(function (data) {
           var respuesta = (data.data);
           if (respuesta == true) {
@@ -20,8 +13,24 @@
         });
       };
     }]);
+    modulCtrls.controller('registroController', ['$scope', 'usuarioService', function ($scope, usuarioService) {
+        $scope.fDatos = {action: 'guardarUser'};
+      $scope.enviar = function () {
+        usuarioService.conexion($scope.fDatos).then(function (data) {
+          console.log(data);
+          if(data.data==""){
+            alert("Error la guardar registro\n Verifique si ya registro este correo");
+          }else{
+             alert("Registro Guardado");
+          }
+          $scope.fDatos = {action: 'guardarUser'};
+        });
+      };
+    }]);
   modulCtrls.controller('adminController', ['$scope','usuarioService', function ($scope, usuarioService) {
       $scope.ver = "";
+      var table;
+      var actionx;
       $scope.fDatos={};
       //TRAER DATOS PRA RELACIONAR LAS TABLAS
       //TRAER TIPO DE CARACTERISTICA
@@ -45,11 +54,15 @@
       //MOSTRAR LOS DIFERENTES FORMULARIOS
       $scope.mostrar = function (ver,tabla,action) {
         $scope.ver = ver;
+        table=tabla;
+        actionx=action;
         $scope.fDatos={tabla: tabla,action: action};
       };
       //GUARDAR LOS DATOS 
       $scope.guardar = function(){
         usuarioService.admin($scope.fDatos).then(function (data) {
+          $scope.fDatos={tabla: table,action: actionx};
+          alert("Registro guardado");
         });
       };
 
