@@ -69,7 +69,7 @@ class AutoModelo {
   }
   public function consultaAuto() {
     try {
-      $sql = $this->db->prepare("SELECT id,marca FROM auto");
+      $sql = $this->db->prepare("SELECT id,marca,modelo FROM auto");
       $sql->execute();
       $resultado = Array();
       while($respuesta = $sql->fetch(PDO::FETCH_ASSOC)){

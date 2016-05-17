@@ -1,26 +1,52 @@
 <uib-tabset active="activeJustified" justified="true">
-  <uib-tab index="0" heading="Guardar">
-    <form role="form" ng-submit="guardar()" novalidate enctype="multipart/form-data">
-      <div class="form-group">
-        <label for="foto">Foto:</label>
-        <!--<input type="file" ng-model="fDatos.foto" name="foto" id="foto" class="form-control" required />-->
-        <fileinput ng-model='fDatos.foto' callback='verAdjuntoArchivo=true' action='uploadFile.php' size = '4' name ='archivo'
-        type="file" accept=".jpg,.png"> </fileinput>
-      </div>
-      <div class="form-group">
-        <label for="marca">Marca:</label>
-        <input type="text" ng-model="fDatos.marca" name="marca" id="marca" class="form-control" required />
-      </div>
-      <div class="form-group">
-        <label for="modelo">Modelo:</label>
-        <input type="text" ng-model="fDatos.modelo" name="modelo" id="modelo" class="form-control" required />
-      </div>
-      <div class="form-group">
-        <input type="submit" id="enviar" class="btn btn-danger" value="Guardar"  />
-      </div>
-    </form>
-  </uib-tab>
-  <uib-tab index="1" heading="SJ">
-    CON JS
-  </uib-tab>
+    <uib-tab index="0" heading="Guardar">
+        <form role="form" ng-submit="guardar()" novalidate enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="foto">Foto:</label>
+                <!--<input type="file" ng-model="fDatos.foto" name="foto" id="foto" class="form-control" required />-->
+                <fileinput ng-model='fDatos.foto' callback='verAdjuntoArchivo=true' action='uploadFile.php' size = '4' name ='archivo'
+                           type="file" accept=".jpg,.png"> </fileinput>
+            </div>
+            <div class="form-group">
+                <label for="marca">Marca:</label>
+                <input type="text" ng-model="fDatos.marca" name="marca" id="marca" class="form-control" required />
+            </div>
+            <div class="form-group">
+                <label for="modelo">Modelo:</label>
+                <input type="text" ng-model="fDatos.modelo" name="modelo" id="modelo" class="form-control" required />
+            </div>
+            <div class="form-group">
+                <input type="submit" id="enviar" class="btn btn-danger" value="Guardar"  />
+            </div>
+        </form>
+    </uib-tab>
+    <uib-tab index="1" heading="Lista de Carros">
+        <table class="table table-condensed table-striped">
+            <thead>
+                <tr>
+                    <th>Marca</th>
+                    <th>Modelos</th>
+                    <th>Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="auto in autos">
+                    <td>
+                        {{auto.marca}}
+                    </td>
+                    <td>
+                        {{auto.modelo}}
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-warning btn-sm" title="Editar carro {{auto.marca}}">
+                            <span class="glyphicon glyphicon-edit"></span>
+                        </button>
+                        <button type="button" class="btn btn-danger btn-sm" title="Eliminar carro {{auto.marca}}">
+                            <span class="glyphicon glyphicon-fire"></span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>          
+    </uib-tab>
 </uib-tabset>
