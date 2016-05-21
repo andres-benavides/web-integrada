@@ -1,8 +1,9 @@
 <?php
+
 session_start();
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
-
+require_once('../nusoap/lib/nusoap.php');
 include '../db/Conexion.php';
 include_once '../modelo/AutoModelo.php';
 include_once '../modelo/TipoCaracteristicaModelo.php';
@@ -35,12 +36,19 @@ switch ($datos['tabla']) {
         echo json_encode($respuesta);
         break;
       case "datosAutos":
-        $auto = new AutoModelo();
-        $respuesta = $auto->datosAuto($varPost['id']);
-        echo json_encode($respuesta);
+//        $auto = new AutoModelo();
+//        $respuesta = $auto->datosAuto($varPost['id']);
+//        echo json_encode($respuesta);
+        $cliente = new nusoap_client('http://localhost/webService/returnArray.php?wsdl', 'WSDL');
+        $cliente->http_encoding = 'utf-8';
+        $cliente->defencoding = 'utf-8';
+        $cliente->decode_utf8 = false;
+        $resultado = $cliente->call('RetornarAutos', array('id' => $varPost['id']));
+        $respuesta = $resultado['magico'];
+        echo ($respuesta);
         break;
       default:
-        
+
         break;
     }
     break;
@@ -112,9 +120,9 @@ switch ($datos['tabla']) {
         $auto = new CalificacionModelo($id_auto, $id_usuario, $calificacion, $fecha);
         echo $auto->guardarCalif();
         break;
-      
+
       default:
-        
+
         break;
     }
     break;
