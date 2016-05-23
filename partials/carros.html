@@ -25,28 +25,43 @@
             <thead>
                 <tr>
                     <th>Marca</th>
-                    <th>Modelos</th>
+                    <th>Modelo</th>
                     <th>Opciones</th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="auto in autos">
                     <td>
-                        {{auto.marca}}
+                        <span editable-text="auto.marca" e-name="marca" e-form="rowform" onbeforesave="checkName($data, auto.id)" e-required>
+                            {{ auto.marca || 'empty' }}
+                        </span>
                     </td>
                     <td>
                         {{auto.modelo}}
                     </td>
-                    <td>
-                        <button type="button" class="btn btn-warning btn-sm" title="Editar carro {{auto.marca}}">
-                            <span class="glyphicon glyphicon-edit"></span>
-                        </button>
-                        <button type="button" class="btn btn-danger btn-sm" title="Eliminar carro {{auto.marca}}">
-                            <span class="glyphicon glyphicon-fire"></span>
-                        </button>
+                    <td style="white-space: nowrap">
+                        <!-- form -->
+                        <form editable-form name="rowform" onbeforesave="saveAuto($data, auto.id)" ng-show="rowform.$visible" 
+                              class="form-buttons form-inline" shown="inserted == auto">
+                            <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
+                                save
+                            </button>
+                            <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
+                                cancel
+                            </button>
+                        </form>
+                        <div class="buttons" ng-show="!rowform.$visible">
+                            <button class="btn btn-primary" ng-click="rowform.$show()">
+                                <span class="glyphicon glyphicon-edit"></span>
+                            </button>
+                            <button class="btn btn-danger" ng-click="removeAuto($index)">
+                                <span class="glyphicon glyphicon-fire"></span>
+                            </button>
+                        </div>  
                     </td>
                 </tr>
             </tbody>
-        </table>          
+        </table>
+        <button class="btn btn-default" ng-click="addAuto()">Add row</button>
     </uib-tab>
 </uib-tabset>
