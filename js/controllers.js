@@ -75,29 +75,26 @@
                 }
             };
 
-            $scope.showStatus = function (auto) {
-                var selected = [];
-                if (auto.status) {
-                    selected = $filter('filter')($scope.statuses, {value: auto.status});
-                }
-                return selected.length ? selected[0].text : 'Not set';
-            };
-
-            $scope.checkName = function (data, id) {
-                if (id === 2 && data !== 'awesome') {
-                    return "autoname 2 should be `awesome`";
-                }
-            };
-
             $scope.saveAuto = function (data, id) {
-                //$scope.auto not updated yet
-                angular.extend(data, {id: id});
-                return $http.post('/saveauto', data);
+                $scope.fDatos.id = id;
+                $scope.fDatos.modelo = data.modelo;
+                $scope.fDatos.marca = data.marca;
+                $scope.fDatos = {tabla: "auto", action: "editar"};
+                usuarioService.admin($scope.fDatos).then(function (data) {
+                    $scope.fDatos = {tabla: table, action: actionx};
+                    alert("Registro Editado");
+                });
             };
 
             // remove auto
-            $scope.removeAuto = function (index) {
+            $scope.removeAuto = function (index, id) {
                 $scope.autos.splice(index, 1);
+                $scope.fDatos.id = id;
+                $scope.fDatos = {tabla: "auto", action: "eliminar"};
+                usuarioService.admin($scope.fDatos).then(function (data) {
+                    $scope.fDatos = {tabla: table, action: actionx};
+                    alert("Registro Eliminado");
+                });
             };
 
             // add auto
